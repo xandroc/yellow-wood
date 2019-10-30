@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  dbfirst:
+    image: postgres
+  dbother:
+    image: postgres
+  first:
+    build: ./first
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./first/way:/code
+    ports:
+      - "8000:8000"
+    depends_on:
+      - dbfirst
+  other:
+    build: ./other
+    command: python manage.py runserver 0.0.0.0:9000
+    volumes:
+      - ./other/way:/code
+    ports:
+      - "9000:9000"
+    depends_on:
+      - dbother
+  diverge:
+    build: ./diverge
+    ports:
+      - 80:80
+    depends_on:
+      - first
+      - other
