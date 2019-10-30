@@ -165,5 +165,5 @@ AUTH_LDAP_USER_ATTR_MAP = {
 try:
     from way.the_difference import *
 except ImportError:
-    print "No way.the_difference.py file found"
+    print("No way.the_difference.py file found")
 

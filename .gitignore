@@ -20,10 +20,13 @@ nosetests.xml
 coverage.xml
 *,cover
 .hypothesis/
-
+.data/*
 # Django stuff:
 *.log
 *the_difference.py
 /venv/
 /env/
+*.crt
+*.key
+
 
